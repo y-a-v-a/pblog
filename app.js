@@ -1,3 +1,6 @@
+/**
+ * Main app script
+ */
 var express = require('express');
 var path = require('path');
 var app = express();
@@ -37,6 +40,7 @@ if ('development' == app.get('env')) {
   app.use(express.errorHandler());
 }
 
+// define param post_id
 app.param('post_id', function(req, res, next, postId) {
   req.db.posts.findById(postId, function(error, post) {
     if (error) return next(error);
@@ -46,8 +50,9 @@ app.param('post_id', function(req, res, next, postId) {
   });
 });
 
-app.param('post_title', function(req, res, next, postTitle) {
-  req.db.posts.findOne({ slug: postTitle }, function(error, post) {
+// define param post_title
+app.param('post_slug', function(req, res, next, postSlug) {
+  req.db.posts.findOne({ slug: postSlug }, function(error, post) {
     if (error) return next(error);
     if (!post) return next(new Error('Post is not found.'));
     req.post = post;
@@ -60,8 +65,7 @@ app.get('/', routes.index);
 app.get('/list', posts.list);
 app.get('/new', posts.new);
 app.post('/new', posts.add);
-//app.get('/read/:post_id', posts.read);
-app.get('/read/:post_title', posts.read);
+app.get('/read/:post_slug', posts.read);
 app.del('/list/:post_id', posts.del);
 
 
@@ -70,4 +74,5 @@ app.all('*', function(req, res){
 })
 
 app.listen(3000);
+
 console.log('Listening on port 3000');

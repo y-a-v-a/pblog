@@ -1,3 +1,6 @@
+/**
+ * Routing for posts
+ */
 exports.list = function(req, res, next) {
     req.db.posts.find().toArray(function(error, posts){
         if (error) return next(error);
