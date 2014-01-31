@@ -1,0 +1,22 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <title><%= title %></title>
+</head>
+<body>
+    new
+    <nav>
+        <a href="/">home</a>
+        <a href="/list">list</a>
+        <a href="/new">new</a>
+    </nav>
+    <div>
+       form here
+       <form method="post" action="/new">
+           <input type="hidden" value="<%=locals._csrf%>" name="_csrf">
+           <input type="text" name="title">
+           <input type="submit">
+       </form> 
+    </div>
+</body>
+</html>

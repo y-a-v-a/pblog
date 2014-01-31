@@ -1,0 +1,12 @@
+{
+  "name": "programmers-log-book",
+  "description": "hello world test app",
+  "version": "0.0.1",
+  "private": true,
+  "dependencies": {
+    "express": "3.4.8",
+    "ejs": "0.8.5",
+    "less-middleware": "~0.1.15",
+    "mongoskin": "~0.6.1"
+  }
+}
