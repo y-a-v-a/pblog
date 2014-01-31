@@ -2,6 +2,8 @@
 <html>
 <head>
     <title><%= title %></title>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script src="/js/main.js"></script>
 </head>
 <body>
     list
@@ -11,10 +13,14 @@
         <a href="/new">new</a>
     </nav>
     <div>
+        <div class="alert"></div>
         <% if (posts.length > 0) { %>
             <ul>
             <% for (var i = 0; i < posts.length; i++) { %>
-                <li><a href="/read/<%= posts[i]._id%>"><%= posts[i].title %></a></li>
+                <li id="<%= posts[i]._id.toString() %>">
+                    <a href="/read/<%= posts[i].slug%>"><%= posts[i].title %></a>
+                    <a class="post-delete" data-post-id="<%= posts[i]._id.toString() %>" data-csrf="<%=locals._csrf%>">delete</a>
+                </li>
             <% } %>
             </ul>
         <% } else { %>

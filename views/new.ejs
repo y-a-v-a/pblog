@@ -14,8 +14,24 @@
        form here
        <form method="post" action="/new">
            <input type="hidden" value="<%=locals._csrf%>" name="_csrf">
-           <input type="text" name="title">
-           <input type="submit">
+           <fieldset><legend>Title</legend>
+           <input type="text" name="title" placeholder="Title">
+           <input type="date" name="date">
+           <input type="time" name="time">
+           </fieldset>
+           <fieldset><legend>Code</legend>
+           <textarea name="code" placeholder="Code" cols="80" rows="20"></textarea>
+           <textarea name="description" placeholder="Description" cols="40" rows="5"></textarea><br>
+           <textarea name="context" placeholder="Context" cols="40" rows="5"></textarea><br>
+           <input type="url" name="ref1" placeholder="Reference URL"><br>
+           <input type="url" name="ref2" placeholder="Reference URL">
+           </fieldset>
+           <fieldset><legend>Misc</legend>
+           <textarea name="spec" placeholder="Specification" cols="40" rows="8"></textarea><br>
+           
+           <label for="morecode">JSBin / Codepen</label><input type="url" id="morecode" name="morecode" placeholder="URL"><br>
+           </fieldset>
+           <input type="submit" value="Save">
        </form> 
     </div>
 </body>

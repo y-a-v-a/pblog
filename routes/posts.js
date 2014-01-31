@@ -18,7 +18,8 @@ exports.add = function(req, res, next) {
     if (!req.body || !req.body.title) return next(new Error('No data provided.'));
     
     req.db.posts.save({
-        title: req.body.title
+        title: req.body.title, 
+        slug: req.body.title.replace(/[^a-z0-9]+/g, '-')
     }, function(error, post) {
         if (error) return next(error);
         if (!post) return next(new Error('Failed to save.'));
@@ -36,7 +37,16 @@ exports.read = function(req, res, next) {
 //         });
 //     });
     res.render('read', {
-        title: res.post.title,
-        post: res.post || {}
+        title: req.post.title,
+        post: req.post || {}
     });
+};
+
+exports.del = function(req, res, next) {
+  req.db.posts.removeById(req.post._id, function(error, count) {
+    if (error) return next(error);
+    if (count !==1) return next(new Error('Something went wrong.'));
+    console.info('Deleted task %s with id=%s completed.', req.post.title, req.post._id);
+    res.send(200);
+  });
 };

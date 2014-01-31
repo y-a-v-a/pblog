@@ -41,7 +41,16 @@ app.param('post_id', function(req, res, next, postId) {
   req.db.posts.findById(postId, function(error, post) {
     if (error) return next(error);
     if (!post) return next(new Error('Post is not found.'));
-    res.post = post;
+    req.post = post;
+    return next();
+  });
+});
+
+app.param('post_title', function(req, res, next, postTitle) {
+  req.db.posts.findOne({ slug: postTitle }, function(error, post) {
+    if (error) return next(error);
+    if (!post) return next(new Error('Post is not found.'));
+    req.post = post;
     return next();
   });
 });
@@ -51,7 +60,9 @@ app.get('/', routes.index);
 app.get('/list', posts.list);
 app.get('/new', posts.new);
 app.post('/new', posts.add);
-app.get('/read/:post_id', posts.read);
+//app.get('/read/:post_id', posts.read);
+app.get('/read/:post_title', posts.read);
+app.del('/list/:post_id', posts.del);
 
 
 app.all('*', function(req, res){
