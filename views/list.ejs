@@ -23,7 +23,7 @@
             <% if (posts.length > 0) { %>
                 <div class="panel-group" id="accordion">
                 <% for (var i = 0; i < posts.length; i++) { %>
-                    <div class="panel panel-default" id="<%= posts[i]._id.toString() %>">
+                    <div class="panel panel-default" id="<%= posts[i]._id.toHexString() %>">
                         <div class="panel-heading">
                             <h4 class="panel-title">
                                 <a data-toggle="collapse" data-parent="#accordion" href="#collapse<%= i %>"><%= posts[i].title %></a>
@@ -47,7 +47,7 @@
                                     <a href="<%= posts[i].playground %>"><%= posts[i].playground %></a>
                                     <% } %>
                                     
-                                    <a class="post-delete" data-post-id="<%= posts[i]._id.toString() %>" data-csrf="<%=locals._csrf%>">delete</a>
+                                    <a class="post-delete" data-post-id="<%= posts[i]._id.toHexString() %>" data-csrf="<%=locals._csrf%>">delete</a>
                                     <a class="post-edit" href="/edit/<%= posts[i].slug.toString() %>">edit</a>
                                 </div>
                             </div>

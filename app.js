@@ -61,12 +61,12 @@ app.param('post_slug', function(req, res, next, postSlug) {
 });
 
 
-app.get('/', routes.index);
-app.get('/list', posts.list);
+app.get('/', posts.list);
+//app.get('/list', posts.list);
 app.get('/new', posts.new);
 app.post('/new', posts.add);
-app.get('/read/:post_slug', posts.read);
-app.del('/list/:post_id', posts.del);
+app.get('/edit/:post_slug', posts.edit);
+app.del('/:post_id', posts.del);
 
 
 app.all('*', function(req, res){

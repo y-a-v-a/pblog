@@ -28,7 +28,7 @@
                <form class="form-horizontal" role="form" method="post" action="/new">
                    <input type="hidden" value="<%=locals._csrf%>" name="_csrf">
                    <% if (post._id) { %>
-                   <input type="hidden" value="<%=post._id || ''%>" name="_id">
+                   <input type="hidden" value="<%=post._id.toHexString() || ''%>" name="_id">
                    <% } %>
                        <div class="form-group">
                            <div class="col-sm-10">

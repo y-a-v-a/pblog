@@ -3,7 +3,11 @@ $(function() {
     $alert.hide();
 
     $('.post-delete').click(function(event) {
-        $target = $(event.target)
+        var doDelete = confirm('Really?');
+        if (doDelete === false) {
+            return;
+        }
+        $target = $(event.target);
         $.ajax({
             type: 'DELETE',
             url: '/' + $target.attr('data-post-id'),
