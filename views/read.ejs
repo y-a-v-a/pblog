@@ -2,14 +2,14 @@
 <html>
 <head>
     <title><%= title %></title>
+    <% include head %>
 </head>
 <body>
-    index
-    <nav>
-        <a href="/">home</a>
-        <a href="/list">list</a>
-        <a href="/new">new</a>
-    </nav>
+    <ul class="nav nav-pills">
+        <li><a href="/">home</a></li>
+        <li><a href="/new">new</a></li>
+        <li class="active"><a>read</a></li>
+    </ul>
     <div>
         <%=post.title%>
     </div>

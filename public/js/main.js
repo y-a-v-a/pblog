@@ -6,7 +6,7 @@ $(function() {
         $target = $(event.target)
         $.ajax({
             type: 'DELETE',
-            url: '/list/' + $target.attr('data-post-id'),
+            url: '/' + $target.attr('data-post-id'),
             data: {
                 _csrf: $target.attr('data-csrf')
             },

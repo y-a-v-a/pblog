@@ -2,13 +2,13 @@
 <html>
 <head>
     <title><%= title %></title>
+    <% include head %>
 </head>
 <body>
-    index
-    <nav>
-        <a href="/">home</a>
-        <a href="/list">list</a>
-        <a href="/new">new</a>
-    </nav>
+    <ul class="nav nav-pills">
+        <li class="active"><a href="/">home</a></li>
+        <li><a href="/list">list</a></li>
+        <li><a href="/new">new</a></li>
+    </ul>
 </body>
 </html>
