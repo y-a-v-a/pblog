@@ -11,8 +11,8 @@
     <div class="container">
         <div class="row">
             <div class="col-md-8">
-                <ul class="nav nav-pills">
-                    <li class="active"><a href="/home">home</a></li>
+                <ul class="nav nav-pills nav-justified">
+                    <li class="active"><a href="/">home</a></li>
                     <li><a href="/new">new</a></li>
                 </ul>
             </div>
@@ -32,23 +32,38 @@
                         <div id="collapse<%= i %>" class="panel-collapse collapse <% if (i===0) { %>in<% } %>">
                             <div class="panel-body">
                                 <div>
+                                    <div class="lead"><%= posts[i].description || '' %></div>
+                                    <% if(posts[i].code) {%>
                                     <pre><%= posts[i].code || '' %></pre>
-                                    <h5>Description</h5>
-                                    <div><%= posts[i].description || '' %></div>
-                                    <h5>Context</h5>
-                                    <div><%= posts[i].context || '' %></div>
-                                    <% if(posts[i].ref1) { %>
-                                    <a href="<%= posts[i].ref1 %>"><%= posts[i].ref1 %></a><br>
                                     <% } %>
-                                    <% if(posts[i].ref2) { %>
-                                    <a href="<%= posts[i].ref2 %>"><%= posts[i].ref2 %></a><br>
+                                    <% if(posts[i].context) {%>
+                                        <dl class="dl-horizontal">
+                                            <dt>Context</dt>
+                                            <dd><%= posts[i].context || '' %></dd>
+                                        </dl>
+                                    <% } %>
+
+                                    <% if(posts[i].ref1) { %>
+                                    <div class="panel panel-info">
+                                      <div class="panel-heading">References</div>
+                                      <div class="panel-body">
+                                          <a href="<%= posts[i].ref1 %>"><%= posts[i].ref1 %></a><br>
+                                          <% if(posts[i].ref2) { %>
+                                          <a href="<%= posts[i].ref2 %>"><%= posts[i].ref2 %></a><br>
+                                          <% } %>
+                                      </div>
+                                    </div>
                                     <% } %>
                                     <% if(posts[i].playground) { %>
-                                    <a href="<%= posts[i].playground %>"><%= posts[i].playground %></a>
+                                        <a href="<%= posts[i].playground %>"><%= posts[i].playground %></a>
                                     <% } %>
                                     
-                                    <a class="post-delete" data-post-id="<%= posts[i]._id.toHexString() %>" data-csrf="<%=locals._csrf%>">delete</a>
-                                    <a class="post-edit" href="/edit/<%= posts[i].slug.toString() %>">edit</a>
+                                    <div class="row">
+                                        <div class="col-sm-12">
+                                            <a class="btn btn-danger post-delete" data-post-id="<%= posts[i]._id.toHexString() %>" data-csrf="<%=locals._csrf%>">delete</a>
+                                            <a class="btn btn-primary post-edit" href="/edit/<%= posts[i].slug.toString() %>">edit</a>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -60,6 +75,7 @@
             <% } %>
             </div>
         </div>
+       <% include footer %>
     </div>
 </body>
 </html>

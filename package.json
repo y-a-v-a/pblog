@@ -1,7 +1,7 @@
 {
   "name": "programmers-log-book",
-  "description": "hello world test app",
-  "version": "0.0.1",
+  "description": "Programmer's log book to keep track of findings while coding!",
+  "version": "0.0.2",
   "private": true,
   "dependencies": {
     "express": "3.4.8",

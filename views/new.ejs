@@ -7,24 +7,15 @@
 <body>
     <div class="container">
         <div class="row">
-            <div class="col-md-6">
-                <nav class="navbar navbar-default" role="navigation">
-                    <div class="container">
-                        <div class="navbar-header">
-                            <a class="navbar-brand" href="#">y_a_v_a</a>
-                        </div>
-                        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                            <ul class="nav navbar-nav">
-                                <li><a href="/">home</a></li>
-                                <li class="active"><a href="/new">new</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </nav>
+            <div class="col-md-8">
+                <ul class="nav nav-pills nav-justified">
+                    <li><a href="/">home</a></li>
+                    <li class="active"><a href="/new">new</a></li>
+                </ul>
             </div>
         </div>
         <div class="row">
-            <div class="col-md-6">
+            <div class="col-md-8">
                <form class="form-horizontal" role="form" method="post" action="/new">
                    <input type="hidden" value="<%=locals._csrf%>" name="_csrf">
                    <% if (post._id) { %>
@@ -67,6 +58,7 @@
                </form>
            </div>
        </div>
+       <% include footer %>
     </div>
 </body>
 </html>

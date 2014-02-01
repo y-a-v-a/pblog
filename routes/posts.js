@@ -2,7 +2,7 @@
  * Routing for posts
  */
 exports.list = function(req, res, next) {
-    req.db.posts.find({},{"sort":[['_id', 'asc']]}).toArray(function(error, posts){
+    req.db.posts.find({},{"sort":[['_id', 'desc']]}).toArray(function(error, posts){
         if (error) return next(error);
         res.render('list', {
           title: 'Post List',
