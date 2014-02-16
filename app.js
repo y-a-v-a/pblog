@@ -23,7 +23,7 @@ app.use(express.logger('dev'));
 app.use(express.bodyParser());
 app.use(express.cookieParser());
 app.use(express.session({
-  secret: '59B93087-78BC-4EB9-993A-A61FC844F6C9'
+  secret: '1346D2F0-8F6E-11E3-BAA8-0800200C9A66'
 }));
 app.use(express.csrf());
 
